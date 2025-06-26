@@ -1,5 +1,12 @@
 from math import dist
 from random import random
+from turtle import *
+def visual(cls):
+    screensize(10000, 10000); up(); tracer(0)
+    for cl in cls:
+        col = (random(), random(), random())
+        [goto(p[0] * 80, p[1] * 80) or dot(10, col) for _, p in cl]
+    done()
 a = [list(map(float, x.replace(',','.').split())) for x in open('27.txt')]
 c = []
 while a:
@@ -15,3 +22,4 @@ while a:
                 c[-1].append([s,p])
 cents = [min(c1) for c1 in c]
 print(sum(c[1][0] for c in cents)/len(cents) * 10000, sum(c[1][1] for c in cents) * 10000)
+visual(cls)
